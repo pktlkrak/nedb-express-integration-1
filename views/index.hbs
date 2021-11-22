@@ -1,0 +1,41 @@
+<h2>02: zapis/odczyt danych w bazie NEDB</h2>
+
+<div class="root">
+    <div class="form">
+        <form action="/add" method="get">
+            {{#each values}}
+            <label>
+                <span class="lbl">{{this}}</span>
+                <span><input type="checkbox" name="{{this}}"></span>
+            </label>
+            {{/each}}
+            <input type="submit" value="Add">
+        </form>
+    </div>
+
+    <div class="list">
+        <table>
+            <tr>
+                <th>&nbsp;</th>
+                {{#each values}}
+                <th>{{this}}</th>
+                {{/each}}
+                <th>&nbsp;</th>
+            </tr>
+            {{#each data}}
+            <tr>
+                <td>{{@index}}</td>
+                {{#each ../values}}
+                <td>{{lookup .. this}}</td>
+                {{/each}}
+                <td>
+                    <form action="/delete">
+                        <input hidden type="text" name="id" value="{{_id}}">
+                        <input type="submit" value="Delete">
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<h2>02: zapis/odczyt danych w bazie NEDB</h2>
+
+<div class="root">
+    <div class="form">
+        <form action="/add" method="get">
+            {{#each values}}
+            <label>
+                <span class="lbl">{{this}}</span>
+                <span><input type="checkbox" name="{{this}}"></span>
+            </label>
+            {{/each}}
+            <input type="submit" value="Add">
+        </form>
+    </div>
+
+    <div class="list">
+        <table>
+            <tr>
+                <th>&nbsp;</th>
+                {{#each values}}
+                <th>{{this}}</th>
+                {{/each}}
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+            </tr>
+            {{#each data}}
+            {{#if edited}}
+            <tr>
+                <form action="/doEdit">
+                    <input hidden type="text" name="id" value="{{_id}}">
+                    <td>{{@index}}</td>
+                    {{#each ../values}}
+                    <td>
+                        <select name="{{this}}">
+                            <option>TAK</option>
+                            <option>NIE</option>
+                            <option>BRAKDANYCH</option>
+                        </select>
+                    </td>
+                    {{/each}}
+                    <td>
+                        <input class="editButton"  type="submit" value="Update">
+                    </td>
+                    <td><button onclick="window.location.href = '/';">Cancel</button></td>
+                </form>
+            </tr>
+            {{else}}
+            <tr>
+                <td>{{@index}}</td>
+                {{#each ../values}}
+                <td>{{lookup .. this}}</td>
+                {{/each}}
+                <td>
+                    <form action="/delete">
+                        <input hidden type="text" name="id" value="{{_id}}">
+                        <input class="deleteButton" type="submit" value="Delete">
+                    </form>
+                </td>
+                <td>
+                    <form action="/edit">
+                        <input hidden type="text" name="id" value="{{_id}}">
+                        <input type="submit" value="Edit">
+                    </form>
+                </td>
+            </tr>
+            {{/if}}
+            {{/each}}
+        </table>
+    </div>
+</div>

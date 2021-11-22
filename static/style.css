@@ -1,0 +1,67 @@
+html{
+    font-family: monospace;
+    font-size: 2em;
+}
+
+body{
+    width: 100%;
+}
+
+h2{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.form label .lbl{
+    color: blue;
+    min-width: 400px;
+    text-align: center;
+}
+
+.form label span{
+    border: 1px solid blue;
+    display: inline-block;
+    padding: .5em;
+}
+
+.form label{
+    display: block;
+}
+
+.root{
+    display: flex;
+}
+
+.form{
+    margin-right: 3em;
+}
+
+th,
+td{
+    border: 2px solid blue;
+    padding: 1em;
+    text-align: center;
+    margin: 2px;
+}
+
+input[type=submit],
+button{
+    border-radius: 5px;
+    background-color: lightgray;
+    color: blue;
+    border: 2px solid blue;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.deleteButton{
+    color: red !important;
+    border-color: red !important;
+}
+
+.editButton{
+    color: violet !important;
+    border-color: violet !important;
+}
+
